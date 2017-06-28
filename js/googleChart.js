@@ -11,29 +11,28 @@ function drawChart() {
     dataTable.addColumn({type: 'number', id: 'Won/Loss'});
     dataTable.addRows([
         [new Date(2017, 3, 13), 0],
-        [new Date(2017, 3, 14), 0],
-        [new Date(2017, 3, 15), 0],
-        [new Date(2017, 3, 16), 0],
+        [new Date(2017, 3, 14), 1],
+        [new Date(2017, 3, 15), 1],
+        [new Date(2017, 3, 16), 2],
         [new Date(2017, 3, 17), 0],
         [new Date(2017, 3, 18), 1],
-        [new Date(2017, 3, 19), 1],
+        [new Date(2017, 3, 19), 0],
         [new Date(2017, 3, 20), 1],
         [new Date(2017, 3, 21), 1],
         [new Date(2017, 3, 22), 2],
-        [new Date(2017, 3, 23), 2],
+        [new Date(2017, 3, 23), 1],
         [new Date(2017, 3, 24), 2],
-        [new Date(2017, 3, 25), 2],
-        [new Date(2017, 3, 26), 2],
-        [new Date(2017, 8, 28), 1]
+        [new Date(2017, 3, 25), 0],
+        [new Date(2017, 3, 26), 2]
     ]);
 
     var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
     var options = {
         title: 'Survey before training',
-        height: 350,
+        height: 280,
         noDataPattern: {
             backgroundColor: '#fff',
-            color: '#D3D3D3'
+            color: '#d4d4d4'
         },
         calendar: {
             cellColor: {
@@ -54,9 +53,9 @@ function drawChart() {
     google.visualization.events.addListener(chart, 'select', selectionHandler);
 
     function selectionHandler() {
-        var selectedData = chart.getSelection(), row, item;
-        row = selectedData[0].row;
-        try {
+        try{
+            var selectedData = chart.getSelection(), row, item;
+            row = selectedData[0].row;
             item = dataTable.getValue(row, 0);
         }catch (err){
             item = " empty cell";
@@ -68,8 +67,7 @@ function drawChart() {
 }
 
 function deleteLegend() {
-
-    $('path[d*="M760,16L910,16L910,31L760,31Z"]').remove();
-    $('text[x*="760"][y*="11.2"]').remove();
-    $('text[x*="910"][y*="11.2"]').remove();
+    $('path[d*="M761,16L911,16L911,31L761,31Z"]').remove();
+    $('text[x*="761"][y*="11.2"]').remove();
+    $('text[x*="911"][y*="11.2"]').remove();
 }
